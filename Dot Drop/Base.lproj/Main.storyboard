@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Dot_Drop" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
+                        <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-du-cxb">
+                                <rect key="frame" x="135" y="387" width="50" height="50"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="info.png"/>
+                                <connections>
+                                    <action selector="infoButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="lUi-ar-DvX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtB-6q-rEV">
+                                <rect key="frame" x="250" y="387" width="50" height="50"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="settings1.png"/>
+                                <connections>
+                                    <action selector="settingsButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="8K9-Wv-P36"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPM-m9-vGO">
+                                <rect key="frame" x="135" y="451" width="50" height="50"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="share.png"/>
+                                <connections>
+                                    <action selector="shareClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="uFC-jF-Egh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlN-gk-SBq">
+                                <rect key="frame" x="20" y="451" width="50" height="50"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="star.png"/>
+                                <connections>
+                                    <action selector="starButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="SVf-D4-GVK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSt-Tj-CbO">
+                                <rect key="frame" x="250" y="451" width="50" height="50"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="trophy.png"/>
+                                <connections>
+                                    <action selector="leaderBoardButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="VBZ-F8-wep"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-qP-bb5">
+                                <rect key="frame" x="20" y="387" width="50" height="50"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="play.png"/>
+                                <connections>
+                                    <action selector="playClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="35Y-mW-Fm1"/>
+                                </connections>
+                            </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="info2.png" translatesAutoresizingMaskIntoConstraints="NO" id="fz6-Xt-4EB">
+                                <rect key="frame" x="20" y="191" width="280" height="188"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="title.png" translatesAutoresizingMaskIntoConstraints="NO" id="5ve-9h-mNy">
+                                <rect key="frame" x="40" y="38" width="240" height="128"/>
+                                <animations/>
+                            </imageView>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fg1-AL-059">
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <animations/>
+                            </adBannerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="hC8-jZ-cge">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="521"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="PlayButton" destination="wnf-qP-bb5" id="v55-Fl-Ier"/>
+                        <outlet property="adBanner" destination="fg1-AL-059" id="Rpv-IV-bIu"/>
+                        <outlet property="background" destination="hC8-jZ-cge" id="Z9J-rc-ykE"/>
+                        <outlet property="infoButton" destination="uWO-du-cxb" id="Zc1-ii-G3g"/>
+                        <outlet property="infoHidden" destination="fz6-Xt-4EB" id="veG-Da-SnR"/>
+                        <outlet property="logo" destination="5ve-9h-mNy" id="7jc-2s-nY8"/>
+                        <outlet property="settingsButton" destination="LtB-6q-rEV" id="P12-hK-ngr"/>
+                        <outlet property="shareButton" destination="SPM-m9-vGO" id="sp3-2l-iOb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128" y="216"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background.png" width="1024" height="1024"/>
+        <image name="info.png" width="100" height="100"/>
+        <image name="info2.png" width="500" height="500"/>
+        <image name="play.png" width="128" height="128"/>
+        <image name="settings1.png" width="128" height="128"/>
+        <image name="share.png" width="128" height="128"/>
+        <image name="star.png" width="128" height="128"/>
+        <image name="title.png" width="353" height="246"/>
+        <image name="trophy.png" width="128" height="128"/>
+    </resources>
+</document>
