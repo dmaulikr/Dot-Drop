@@ -19,6 +19,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="hC8-jZ-cge">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="521"/>
+                                <animations/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-du-cxb">
                                 <rect key="frame" x="135" y="387" width="50" height="50"/>
                                 <animations/>
@@ -92,10 +96,6 @@
                                     <constraint firstAttribute="height" constant="66" id="UwC-Em-PWd"/>
                                 </constraints>
                             </adBannerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="hC8-jZ-cge">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="521"/>
-                                <animations/>
-                            </imageView>
                         </subviews>
                         <animations/>
                         <constraints>
