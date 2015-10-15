@@ -112,6 +112,14 @@
                                     <action selector="infoButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="lUi-ar-DvX"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cc-Vs-aP5">
+                                <rect key="frame" x="135" y="329" width="50" height="50"/>
+                                <animations/>
+                                <state key="normal" image="audioOn.png"/>
+                                <connections>
+                                    <action selector="audioButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="IHj-OJ-cO2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <constraints>
@@ -147,6 +155,7 @@
                     <connections>
                         <outlet property="PlayButton" destination="wnf-qP-bb5" id="v55-Fl-Ier"/>
                         <outlet property="adBanner" destination="fg1-AL-059" id="Rpv-IV-bIu"/>
+                        <outlet property="audioButton" destination="1cc-Vs-aP5" id="fbS-CE-Qmo"/>
                         <outlet property="background" destination="hC8-jZ-cge" id="Z9J-rc-ykE"/>
                         <outlet property="infoButton" destination="uWO-du-cxb" id="Zc1-ii-G3g"/>
                         <outlet property="infoHidden" destination="fz6-Xt-4EB" id="veG-Da-SnR"/>
@@ -159,10 +168,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128" y="216"/>
+            <point key="canvasLocation" x="119" y="20"/>
         </scene>
     </scenes>
     <resources>
+        <image name="audioOn.png" width="128" height="128"/>
         <image name="background.png" width="1024" height="1024"/>
         <image name="info.png" width="100" height="100"/>
         <image name="info2.png" width="500" height="500"/>

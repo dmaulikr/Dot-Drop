@@ -12,6 +12,7 @@ import iAd
 import SceneKit
 import GameKit
 
+var audioOn: Bool = true
 
 class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterControllerDelegate {
     
@@ -25,6 +26,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     @IBOutlet var adBanner: ADBannerView!
     @IBOutlet var starButton: UIButton!
     @IBOutlet var trophyButton: UIButton!
+    @IBOutlet var audioButton: UIButton!
     
     var skView = SKView()
     var scene = SKScene()
@@ -154,7 +156,8 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     
     @IBAction func settingsButtonClicked(sender: AnyObject) {
         
-        
+        audioButton.hidden = false
+        infoHidden.hidden = true
         
     }
 
@@ -164,6 +167,34 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         
     }
 
+    @IBAction func audioButtonClicked(sender: AnyObject) {
+        let off : UIImage = UIImage(named:"ImageName")!
+        let on : UIImage = UIImage(named:"ImageName")!
+        if audioButton.imageView == on{
+            
+            audioButton.setImage(off, forState: UIControlState.Normal)
+            
+        }
+        
+        if audioButton.imageView == off{
+            
+            audioButton.setImage(on, forState: UIControlState.Normal)
+            
+        }
+        
+    }
+    
+    func turnAudioOff() {
+        
+        audioOn = false
+        
+    }
+    
+    func turnAudioOn() {
+        
+        audioOn = true
+        
+    }
     
     @IBAction func playClicked(sender: AnyObject) {
         
@@ -179,6 +210,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
             self.starButton.center.x = self.view.frame.width + 600
             self.trophyButton.center.x = self.view.frame.width + 600
             self.adBanner.center.x = self.view.frame.width + 600
+            self.audioButton.center.x = self.view.frame.width + 600
             self.view.frame.width + 800
             
         }), completion: nil)

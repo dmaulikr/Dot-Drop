@@ -85,7 +85,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         
         setupAudioPlayers()
         
-        musicPlayer.play()
+        if audioOn == true {
+            
+            musicPlayer.play()
+        }
+        
+        
         
         var timer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "update", userInfo: nil, repeats: true)
         
@@ -574,6 +579,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
+        if audioOn == false {
+            
+            try musicPlayer.stop()
+            
+        }
         
         if AwaitingRestart == false {
         
