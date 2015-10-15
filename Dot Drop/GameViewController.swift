@@ -45,7 +45,6 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         scene.scaleMode = .AspectFill
         authenticateLocalPlayer()
     }
-    //memes
         //initiate gamecenter
         func authenticateLocalPlayer(){
             
