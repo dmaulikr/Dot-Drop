@@ -23,6 +23,8 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     @IBOutlet var settingsButton: UIButton!
     @IBOutlet var shareButton: UIButton!
     @IBOutlet var adBanner: ADBannerView!
+    @IBOutlet var starButton: UIButton!
+    @IBOutlet var trophyButton: UIButton!
     
     var skView = SKView()
     var scene = SKScene()
@@ -174,6 +176,8 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
             self.infoHidden.center.x = self.view.frame.width + 600
             self.settingsButton.center.x = self.view.frame.width + 600
             self.shareButton.center.x = self.view.frame.width + 600
+            self.starButton.center.x = self.view.frame.width + 600
+            self.trophyButton.center.x = self.view.frame.width + 600
             self.adBanner.center.x = self.view.frame.width + 600
             self.view.frame.width + 800
             

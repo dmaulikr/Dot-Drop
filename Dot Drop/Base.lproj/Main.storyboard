@@ -23,15 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="521"/>
                                 <animations/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-du-cxb">
-                                <rect key="frame" x="135" y="387" width="50" height="50"/>
-                                <animations/>
-                                <state key="normal" title="Button" image="info.png"/>
-                                <connections>
-                                    <action selector="infoButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="lUi-ar-DvX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtB-6q-rEV">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtB-6q-rEV">
                                 <rect key="frame" x="250" y="387" width="50" height="50"/>
                                 <animations/>
                                 <state key="normal" title="Button" image="settings1.png"/>
@@ -39,7 +31,7 @@
                                     <action selector="settingsButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="8K9-Wv-P36"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPM-m9-vGO">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPM-m9-vGO">
                                 <rect key="frame" x="135" y="451" width="50" height="50"/>
                                 <animations/>
                                 <state key="normal" title="Button" image="share.png"/>
@@ -47,7 +39,7 @@
                                     <action selector="shareClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="uFC-jF-Egh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlN-gk-SBq">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlN-gk-SBq">
                                 <rect key="frame" x="20" y="451" width="50" height="50"/>
                                 <animations/>
                                 <constraints>
@@ -58,7 +50,7 @@
                                     <action selector="starButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="SVf-D4-GVK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSt-Tj-CbO">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSt-Tj-CbO">
                                 <rect key="frame" x="250" y="451" width="50" height="50"/>
                                 <animations/>
                                 <state key="normal" title="Button" image="trophy.png"/>
@@ -66,7 +58,7 @@
                                     <action selector="leaderBoardButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="VBZ-F8-wep"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-qP-bb5">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-qP-bb5">
                                 <rect key="frame" x="20" y="387" width="50" height="50"/>
                                 <animations/>
                                 <constraints>
@@ -82,7 +74,7 @@
                                 <rect key="frame" x="20" y="191" width="280" height="188"/>
                                 <animations/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title.png" translatesAutoresizingMaskIntoConstraints="NO" id="5ve-9h-mNy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title.png" translatesAutoresizingMaskIntoConstraints="NO" id="5ve-9h-mNy">
                                 <rect key="frame" x="40" y="38" width="240" height="128"/>
                                 <animations/>
                                 <constraints>
@@ -96,6 +88,14 @@
                                     <constraint firstAttribute="height" constant="66" id="UwC-Em-PWd"/>
                                 </constraints>
                             </adBannerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-du-cxb">
+                                <rect key="frame" x="135" y="387" width="50" height="50"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="info.png"/>
+                                <connections>
+                                    <action selector="infoButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="lUi-ar-DvX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <constraints>
@@ -150,6 +150,8 @@
                         <outlet property="logo" destination="5ve-9h-mNy" id="7jc-2s-nY8"/>
                         <outlet property="settingsButton" destination="LtB-6q-rEV" id="P12-hK-ngr"/>
                         <outlet property="shareButton" destination="SPM-m9-vGO" id="sp3-2l-iOb"/>
+                        <outlet property="starButton" destination="AlN-gk-SBq" id="4xv-IB-yZC"/>
+                        <outlet property="trophyButton" destination="LSt-Tj-CbO" id="BNE-7c-5pD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
