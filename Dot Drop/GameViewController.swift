@@ -14,8 +14,15 @@ import GameKit
 
 var audioOn: Bool = true
 
-class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterControllerDelegate {
+func pushAd() {
     
+    
+    
+}
+
+class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterControllerDelegate {
+    var interstitialAd:ADInterstitialAd!
+    var interstitialAdView: UIView = UIView()
     @IBOutlet var background: UIImageView!
     @IBOutlet var PlayButton: UIButton!
     @IBOutlet var infoButton: UIButton!
@@ -27,24 +34,29 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     @IBOutlet var starButton: UIButton!
     @IBOutlet var trophyButton: UIButton!
     @IBOutlet var audioButton: UIButton!
+    @IBOutlet var backButton: UIButton!
     
     var skView = SKView()
     var scene = SKScene()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.view.subviews[0])
+        print(self.view.subviews[1])
+        print(self.view.subviews[2])
+        //loadInterstitialAd()
+        backButton.userInteractionEnabled = false
+        backButton.hidden = true
+        //self.backButton.bringSubviewToFront(skView)
+        self.requestInterstitialAdPresentation()
         adBanner.delegate = self
         adBanner.hidden = true
-        self.canDisplayBannerAds = true
-        
-        self.interstitialPresentationPolicy =
-            ADInterstitialPresentationPolicy.Manual
-        
+        self.interstitialPresentationPolicy = ADInterstitialPresentationPolicy.Manual
         skView = SKView(frame: self.view.frame)
         scene = GameScene(size: skView.bounds.size)
         
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skView.showsFPS = false
+        skView.showsNodeCount = false
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .AspectFill
         authenticateLocalPlayer()
@@ -67,27 +79,46 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
             
         }
     
-    //send high score to leaderboard
-    func saveHighscore(score:Int) {
-        print("GK saving high score")
-        //check if user is signed in
-        if GKLocalPlayer.localPlayer().authenticated {
-            
-            var scoreReporter = GKScore(leaderboardIdentifier: "DotDropLeaderboard") //leaderboard id here
-            
-            scoreReporter.value = Int64(HighScore) //score variable here (same as above)
-            
-            var scoreArray: [GKScore] = [scoreReporter]
-            
-            GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError?) -> Void in
-                if error != nil {
-                    print("error")
-                }
-            })
-            
-        }
-        
+    /*func loadInterstitialAd() {
+        print("LoadIntersitialAd")
+        interstitialAd = ADInterstitialAd()
+        interstitialAd.delegate = self
     }
+    
+    func interstitialAdWillLoad(interstitialAd: ADInterstitialAd!) {
+        print("IntersitialAdWillLoad")
+    }
+    
+    func interstitialAdDidLoad(interstitialAd: ADInterstitialAd!) {
+        print("InterstitialAdDidLoad")
+        interstitialAdView = UIView()
+        interstitialAdView.frame = self.view.bounds
+        view.addSubview(interstitialAdView)
+        
+        interstitialAd.presentInView(interstitialAdView)
+        UIViewController.prepareInterstitialAds()
+    }
+    
+    func interstitialAdActionDidFinish(interstitialAd: ADInterstitialAd!) {
+        print("InterstitialAdActionDidFinish")
+        interstitialAdView.removeFromSuperview()
+    }
+    
+    func interstitialAdActionShouldBegin(interstitialAd: ADInterstitialAd!, willLeaveApplication willLeave: Bool) -> Bool {
+        print("InterstitialAdActionShouldBegin")
+        return true
+    }
+    
+    func interstitialAd(interstitialAd: ADInterstitialAd!, didFailWithError error: NSError!) {
+        print("InterstitialAdDidFailWithError")
+    }
+    
+    func interstitialAdDidUnload(interstitialAd: ADInterstitialAd!) {
+        print("InterstitialAdDidUnload")
+        interstitialAdView.removeFromSuperview()
+    }*/
+    
+    //send high score to leaderboard
     
     @IBAction func leaderBoardButtonClicked(sender: AnyObject) {
         
@@ -96,14 +127,15 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     }
     //shows leaderboard screen
     func showLeader() {
-        var vc = self.view?.window?.rootViewController
-        var gc = GKGameCenterViewController()
-        gc.gameCenterDelegate = self
-        vc?.presentViewController(gc, animated: true, completion: nil)
+        let gcVC: GKGameCenterViewController = GKGameCenterViewController()
+        gcVC.gameCenterDelegate = self
+        gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+        gcVC.leaderboardIdentifier = "DotDropLeaderboard"
+        self.presentViewController(gcVC, animated: true, completion: nil)
     }
     
     //hides leaderboard screen
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!)
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController)
     {
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
         
@@ -150,37 +182,62 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     
     @IBAction func infoButtonClicked(sender: AnyObject) {
         
-        self.infoHidden.hidden = false
-        
+        switch (infoHidden.hidden) {
+            
+        case false:
+            print("Hiding Info Image")
+            infoHidden.hidden = true
+            break;
+        case true:
+            print("Showing Info Image")
+            infoHidden.hidden = false
+        default:
+            break;
+        }
+        audioButton.hidden = true
     }
-    
     @IBAction func settingsButtonClicked(sender: AnyObject) {
         
-        audioButton.hidden = false
+        switch (audioButton.hidden) {
+  
+        case false:
+            print("Hiding AudioButton")
+            audioButton.hidden = true
+    break;
+        case true:
+            print("Showing AudioButton")
+            audioButton.hidden = false
+  default:
+    break;
+}
         infoHidden.hidden = true
         
     }
 
     @IBAction func shareClicked(sender: AnyObject) {
         
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://JustFunllc.com")!)
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://twitter.com/GingerCodeTeam")!)
         
     }
 
     @IBAction func audioButtonClicked(sender: AnyObject) {
-        let off : UIImage = UIImage(named:"ImageName")!
-        let on : UIImage = UIImage(named:"ImageName")!
-        if audioButton.imageView == on{
+        let off : UIImage = UIImage(named:"audioOff")!
+        let on : UIImage = UIImage(named:"audioOn")!
+        switch (audioOn) {
             
-            audioButton.setImage(off, forState: UIControlState.Normal)
-            
-        }
-        
-        if audioButton.imageView == off{
-            
+        case false:
             audioButton.setImage(on, forState: UIControlState.Normal)
-            
-        }
+            turnAudioOn()
+            print("Turning On Audio")
+    break;
+        case true:
+            audioButton.setImage(off, forState: UIControlState.Normal)
+            turnAudioOff()
+            print("Turning Off Audio")
+  default:
+    break;
+}
+
         
     }
     
@@ -195,10 +252,31 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         audioOn = true
         
     }
-    
-    @IBAction func playClicked(sender: AnyObject) {
+    @IBAction func backToMenuClicked(sender: AnyObject) {
         
         UIView.animateWithDuration(2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 6, options: [], animations: ({
+            
+            self.background.center.x = self.view.frame.width - 600
+            self.PlayButton.center.x = self.view.frame.width - 600
+            self.infoButton.center.x = self.view.frame.width - 600
+            self.logo.center.x = self.view.frame.width - 600
+            self.infoHidden.center.x = self.view.frame.width - 600
+            self.settingsButton.center.x = self.view.frame.width - 600
+            self.shareButton.center.x = self.view.frame.width - 600
+            self.starButton.center.x = self.view.frame.width - 600
+            self.trophyButton.center.x = self.view.frame.width - 600
+            self.adBanner.center.x = self.view.frame.width - 600
+            self.audioButton.center.x = self.view.frame.width - 600
+            //self.view.frame.width - 800
+            
+        }), completion: nil)
+        
+        skView.removeFromSuperview()
+        
+    }
+    
+    @IBAction func playClicked(sender: AnyObject) {
+        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 6, options: [], animations: ({
             
             self.background.center.x = self.view.frame.width + 600
             self.PlayButton.center.x = self.view.frame.width + 600
@@ -211,12 +289,32 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
             self.trophyButton.center.x = self.view.frame.width + 600
             self.adBanner.center.x = self.view.frame.width + 600
             self.audioButton.center.x = self.view.frame.width + 600
-            self.view.frame.width + 800
+            //self.view.frame.width + 800
             
         }), completion: nil)
         
         self.view.addSubview(skView)
+        print("test")
+        print(self.view.subviews.count)
+        for subview:UIView in self.view.subviews {
+            
+            print(subview)
+            
+        }
+        if self.view.subviews[self.view.subviews.count - 1] != skView {
+            print("Found")
+            self.view.addSubview(skView)
+            
+        }
+        
         skView.presentScene(scene)
+        backButton.userInteractionEnabled = true
+        backButton.hidden = false
+        //skView.bringSubviewToFront(backButton)
+        //self.view.bringSubviewToFront(backButton)
+        //UIView.transitionFromView(skView, toView: backButton, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, completion: nil)
+        skView.insertSubview(backButton, aboveSubview: skView
+        )
         
     }
     

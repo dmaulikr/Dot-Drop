@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		EB037B771BC8AFA000708729 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB037B761BC8AFA000708729 /* GameKit.framework */; };
+		EB222FAB1CC06DDE00032B48 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB222FA91CC06DDE00032B48 /* MyParticle.sks */; };
+		EB222FAC1CC06DDE00032B48 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = EB222FAA1CC06DDE00032B48 /* spark.png */; };
 		EB2C17471BCDE4DE00664813 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2C17461BCDE4DE00664813 /* iAd.framework */; };
-		EB2D0DB71BCC992F0080BE48 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2D0DB61BCC992F0080BE48 /* share.png */; settings = {ASSET_TAGS = (); }; };
-		EB3A61F91BC490E70017407F /* Animations in Resources */ = {isa = PBXBuildFile; fileRef = EB3A61F81BC490E70017407F /* Animations */; settings = {ASSET_TAGS = (); }; };
+		EB2D0DB71BCC992F0080BE48 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2D0DB61BCC992F0080BE48 /* share.png */; };
+		EB3A61F91BC490E70017407F /* Animations in Resources */ = {isa = PBXBuildFile; fileRef = EB3A61F81BC490E70017407F /* Animations */; };
 		EB5F7C701BBF60D70000DD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5F7C6F1BBF60D70000DD40 /* AppDelegate.swift */; };
 		EB5F7C721BBF60D80000DD40 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB5F7C711BBF60D80000DD40 /* GameScene.sks */; };
 		EB5F7C741BBF60D80000DD40 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5F7C731BBF60D80000DD40 /* GameScene.swift */; };
@@ -20,19 +22,21 @@
 		EB5F7C7E1BBF60D80000DD40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5F7C7C1BBF60D80000DD40 /* LaunchScreen.storyboard */; };
 		EB5F7C891BBF60DA0000DD40 /* Dot_DropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5F7C881BBF60DA0000DD40 /* Dot_DropTests.swift */; };
 		EB5F7C941BBF60DA0000DD40 /* Dot_DropUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5F7C931BBF60DA0000DD40 /* Dot_DropUITests.swift */; };
-		EB5F7CB41BC05BF80000DD40 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = EB5F7CB11BC05BF80000DD40 /* fonts */; settings = {ASSET_TAGS = (); }; };
-		EB5F7CB51BC05BF80000DD40 /* images in Resources */ = {isa = PBXBuildFile; fileRef = EB5F7CB21BC05BF80000DD40 /* images */; settings = {ASSET_TAGS = (); }; };
-		EB5F7CB61BC05BF80000DD40 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = EB5F7CB31BC05BF80000DD40 /* sounds */; settings = {ASSET_TAGS = (); }; };
-		EBBDEC751BCF130600A04DF3 /* trophy.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBDEC741BCF130600A04DF3 /* trophy.png */; settings = {ASSET_TAGS = (); }; };
-		EBBDEC771BCF131F00A04DF3 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBDEC761BCF131F00A04DF3 /* star.png */; settings = {ASSET_TAGS = (); }; };
-		EBBDEC7A1BD056CE00A04DF3 /* audioOff.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBDEC781BD056CE00A04DF3 /* audioOff.png */; settings = {ASSET_TAGS = (); }; };
-		EBBDEC7B1BD056CE00A04DF3 /* audioOn.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBDEC791BD056CE00A04DF3 /* audioOn.png */; settings = {ASSET_TAGS = (); }; };
-		EBE3889E1BC97A05006D4A0D /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE3889D1BC97A05006D4A0D /* play.png */; settings = {ASSET_TAGS = (); }; };
-		EBE388A01BC97A2C006D4A0D /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE3889F1BC97A2C006D4A0D /* info.png */; settings = {ASSET_TAGS = (); }; };
-		EBE388A21BC97A3D006D4A0D /* settings1.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE388A11BC97A3D006D4A0D /* settings1.png */; settings = {ASSET_TAGS = (); }; };
-		EBE388A41BC97A4A006D4A0D /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE388A31BC97A4A006D4A0D /* background.png */; settings = {ASSET_TAGS = (); }; };
-		EBE388A61BC97A53006D4A0D /* info2.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE388A51BC97A53006D4A0D /* info2.png */; settings = {ASSET_TAGS = (); }; };
-		EBE388A81BC97A59006D4A0D /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE388A71BC97A59006D4A0D /* title.png */; settings = {ASSET_TAGS = (); }; };
+		EB5F7CB41BC05BF80000DD40 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = EB5F7CB11BC05BF80000DD40 /* fonts */; };
+		EB5F7CB51BC05BF80000DD40 /* images in Resources */ = {isa = PBXBuildFile; fileRef = EB5F7CB21BC05BF80000DD40 /* images */; };
+		EB5F7CB61BC05BF80000DD40 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = EB5F7CB31BC05BF80000DD40 /* sounds */; };
+		EBBDEC751BCF130600A04DF3 /* trophy.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBDEC741BCF130600A04DF3 /* trophy.png */; };
+		EBBDEC771BCF131F00A04DF3 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBDEC761BCF131F00A04DF3 /* star.png */; };
+		EBBDEC7A1BD056CE00A04DF3 /* audioOff.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBDEC781BD056CE00A04DF3 /* audioOff.png */; };
+		EBBDEC7B1BD056CE00A04DF3 /* audioOn.png in Resources */ = {isa = PBXBuildFile; fileRef = EBBDEC791BD056CE00A04DF3 /* audioOn.png */; };
+		EBD864431BD4092A0094D389 /* audioOff.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD864411BD409290094D389 /* audioOff.png */; };
+		EBD864441BD4092A0094D389 /* audioOn.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD864421BD4092A0094D389 /* audioOn.png */; };
+		EBE3889E1BC97A05006D4A0D /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE3889D1BC97A05006D4A0D /* play.png */; };
+		EBE388A01BC97A2C006D4A0D /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE3889F1BC97A2C006D4A0D /* info.png */; };
+		EBE388A21BC97A3D006D4A0D /* settings1.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE388A11BC97A3D006D4A0D /* settings1.png */; };
+		EBE388A41BC97A4A006D4A0D /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE388A31BC97A4A006D4A0D /* background.png */; };
+		EBE388A61BC97A53006D4A0D /* info2.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE388A51BC97A53006D4A0D /* info2.png */; };
+		EBE388A81BC97A59006D4A0D /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = EBE388A71BC97A59006D4A0D /* title.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		EB037B761BC8AFA000708729 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		EB222FA91CC06DDE00032B48 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		EB222FAA1CC06DDE00032B48 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		EB2C17461BCDE4DE00664813 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		EB2D0DB61BCC992F0080BE48 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = images/UI/share.png; sourceTree = "<group>"; };
 		EB3A61F81BC490E70017407F /* Animations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Animations; sourceTree = "<group>"; };
@@ -79,6 +85,8 @@
 		EBBDEC761BCF131F00A04DF3 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = images/UI/star.png; sourceTree = "<group>"; };
 		EBBDEC781BD056CE00A04DF3 /* audioOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = audioOff.png; path = images/UI/audioOff.png; sourceTree = "<group>"; };
 		EBBDEC791BD056CE00A04DF3 /* audioOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = audioOn.png; path = images/UI/audioOn.png; sourceTree = "<group>"; };
+		EBD864411BD409290094D389 /* audioOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = audioOff.png; path = images/UI/audioOff.png; sourceTree = "<group>"; };
+		EBD864421BD4092A0094D389 /* audioOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = audioOn.png; path = images/UI/audioOn.png; sourceTree = "<group>"; };
 		EBE3889D1BC97A05006D4A0D /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = images/UI/play.png; sourceTree = "<group>"; };
 		EBE3889F1BC97A2C006D4A0D /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = images/UI/info.png; sourceTree = "<group>"; };
 		EBE388A11BC97A3D006D4A0D /* settings1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings1.png; path = images/UI/settings1.png; sourceTree = "<group>"; };
@@ -123,6 +131,8 @@
 				EB5F7C871BBF60DA0000DD40 /* Dot DropTests */,
 				EB5F7C921BBF60DA0000DD40 /* Dot DropUITests */,
 				EB5F7C6D1BBF60D70000DD40 /* Products */,
+				EBD864411BD409290094D389 /* audioOff.png */,
+				EBD864421BD4092A0094D389 /* audioOn.png */,
 				EBE3889D1BC97A05006D4A0D /* play.png */,
 				EBE3889F1BC97A2C006D4A0D /* info.png */,
 				EBE388A11BC97A3D006D4A0D /* settings1.png */,
@@ -157,6 +167,8 @@
 				EB5F7C6F1BBF60D70000DD40 /* AppDelegate.swift */,
 				EB5F7C711BBF60D80000DD40 /* GameScene.sks */,
 				EB5F7C731BBF60D80000DD40 /* GameScene.swift */,
+				EB222FA91CC06DDE00032B48 /* MyParticle.sks */,
+				EB222FAA1CC06DDE00032B48 /* spark.png */,
 				EB5F7C751BBF60D80000DD40 /* GameViewController.swift */,
 				EB5F7C771BBF60D80000DD40 /* Main.storyboard */,
 				EB5F7C7A1BBF60D80000DD40 /* Assets.xcassets */,
@@ -251,6 +263,7 @@
 				TargetAttributes = {
 					EB5F7C6B1BBF60D60000DD40 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = RP6CD35H67;
 					};
 					EB5F7C831BBF60DA0000DD40 = {
 						CreatedOnToolsVersion = 7.0;
@@ -291,6 +304,8 @@
 				EBE388A41BC97A4A006D4A0D /* background.png in Resources */,
 				EBE388A81BC97A59006D4A0D /* title.png in Resources */,
 				EBBDEC751BCF130600A04DF3 /* trophy.png in Resources */,
+				EBD864441BD4092A0094D389 /* audioOn.png in Resources */,
+				EBD864431BD4092A0094D389 /* audioOff.png in Resources */,
 				EBBDEC7A1BD056CE00A04DF3 /* audioOff.png in Resources */,
 				EBE388A21BC97A3D006D4A0D /* settings1.png in Resources */,
 				EBE388A01BC97A2C006D4A0D /* info.png in Resources */,
@@ -299,9 +314,11 @@
 				EBE388A61BC97A53006D4A0D /* info2.png in Resources */,
 				EB2D0DB71BCC992F0080BE48 /* share.png in Resources */,
 				EBBDEC771BCF131F00A04DF3 /* star.png in Resources */,
+				EB222FAC1CC06DDE00032B48 /* spark.png in Resources */,
 				EBE3889E1BC97A05006D4A0D /* play.png in Resources */,
 				EB5F7CB61BC05BF80000DD40 /* sounds in Resources */,
 				EB5F7CB41BC05BF80000DD40 /* fonts in Resources */,
+				EB222FAB1CC06DDE00032B48 /* MyParticle.sks in Resources */,
 				EB5F7C7E1BBF60D80000DD40 /* LaunchScreen.storyboard in Resources */,
 				EB3A61F91BC490E70017407F /* Animations in Resources */,
 				EB5F7C7B1BBF60D80000DD40 /* Assets.xcassets in Resources */,
@@ -404,6 +421,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -449,6 +467,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -479,9 +498,10 @@
 				INFOPLIST_FILE = "Dot Drop/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.justfun.Dot-Drop";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JacobSandum.DotDrop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -494,9 +514,10 @@
 				INFOPLIST_FILE = "Dot Drop/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.justfun.Dot-Drop";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JacobSandum.DotDrop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

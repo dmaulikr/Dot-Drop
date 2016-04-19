@@ -27,7 +27,6 @@ struct Physics {
 public func pauseGame(){
     
     IsPaused = true
-    NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore")
 }
 
 public func resumeGame(){
@@ -42,7 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
     var bar:SKShapeNode = SKShapeNode()
     var button: SKNode! = nil
     var increment: CGFloat = 0.01
-    var radius: CGFloat = 25
+    var radius: CGFloat = 30
     var ChangeCounter = 0
     var NodeClicked = ""
     var AwaitingRestart = false
@@ -58,11 +57,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
     var Yellow2 = SKShapeNode()
     var Purple2 = SKShapeNode()
     var Blue2 = SKShapeNode()
-    var sparkEmitter = SKEmitterNode(fileNamed: "Animations/Spark")
+    //var sparkEmitter = SKEmitterNode(fileNamed: "Animations/Spark")
     let userDefaults = NSUserDefaults.standardUserDefaults()
     var ScoreLabel:SKLabelNode!
     var HighScoreLabel:SKLabelNode!
     var RestartLabel:SKLabelNode!
+    var BackButton:SKSpriteNode!
     var π = M_PI
     var clickPlayer: AVAudioPlayer = AVAudioPlayer()
     var hitPlayer: AVAudioPlayer = AVAudioPlayer()
@@ -70,7 +70,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
     var musicPlayer: AVAudioPlayer = AVAudioPlayer()
     var pointPlayer: AVAudioPlayer = AVAudioPlayer()
     var pop2Player: AVAudioPlayer = AVAudioPlayer()
-
     
     var Background = SKSpriteNode()
     var startTimer = NSTimer()
@@ -80,19 +79,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+
         
         
-        
-        setupAudioPlayers()
-        
-        if audioOn == true {
-            
-            musicPlayer.play()
-        }
-        
-        
-        
-        var timer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "update", userInfo: nil, repeats: true)
+        //Add this back in if you want the color needed to change every minute
+        //var timer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "update", userInfo: nil, repeats: true)
         
         CustomWidth = UInt32(frame.size.width - 300)
         print("Normal Width Is: \(frame.size.width)")
@@ -111,8 +102,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         self.addChild(Background)
         
         //Physics
-        self.physicsWorld.gravity = CGVector( dx: 0.0, dy: -0.1 )
-        self.physicsWorld.contactDelegate = self
+        //self.physicsWorld.gravity = CGVector( dx: 0.0, dy: -0.2 )
+        //self.physicsWorld.contactDelegate = self
         print(physicsWorld.speed)
         
         setupCircles()
@@ -122,10 +113,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         
         addRectangleToBottom()
         
-        setupLabels()
+        if RestartLabel == nil && ScoreLabel == nil && HighScoreLabel == nil {
+            
+           setupLabels()
+            setupAudioPlayers()
+        }
+        
+        if audioOn == true {
+            
+            musicPlayer.play()
+        }
         
         HighScore = userDefaults.integerForKey("highscore")
-        
+        print("High Score Saved in Defaults equals: \(userDefaults.integerForKey("highscore"))")
+        HighScoreLabel.text = "HighScore: \(String(HighScore))"
         //sparkEmitter!.position = CGPointMake(-100, -100)
         //self.addChild(sparkEmitter!)
         //sparkEmitter!.targetNode = self
@@ -166,6 +167,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         
     }
     
+    func buttonAction(sender:UIButton!)
+    {
+        print("Button tapped")
+    }
+    
     func waitForRestart() {
         
         self.physicsWorld.speed = 0
@@ -173,13 +179,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         removeScoreLabels()
     }
     
+    func goBackToMenu() {
+        
+        
+    }
+    
     func restartGame() {
         
-        self.physicsWorld.speed = 1.0
+        //self.physicsWorld.speed = 1.0
         spawnCircles()
         changeColorNeeded()
         removeRestartLabel()
         addBackScoreLabels()
+        //self.physicsWorld.gravity = CGVector( dx: 0.0, dy: -0.2 )
     }
     
     func setupLabels()  {
@@ -294,6 +306,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
                 changeGreen()
                 
             }
+            let randomX: CGFloat = CGFloat(drand48())
+            print("RandomX For Impulse = \(randomX)")
+            self.Green.physicsBody?.applyImpulse(CGVectorMake(0, -200))
+            print(self.Green.position.y)
         }
         
     }
@@ -314,6 +330,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
                 changeRed()
                 
             }
+            let randomX: CGFloat = CGFloat(drand48())
+            print("RandomX For Impulse = \(randomX)")
+            self.Red.physicsBody?.applyImpulse(CGVectorMake(0, -200))
+            print(self.Red.position.y)
         }
     }
     
@@ -332,6 +352,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
                 changeBlue()
                 
             }
+            let randomX: CGFloat = CGFloat(drand48())
+            print("RandomX For Impulse = \(randomX)")
+            print("Applying Impulse")
+            self.Blue.physicsBody?.applyImpulse(CGVectorMake(0, -200))
+            print(self.Blue.position.y)
         }
     }
     
@@ -351,6 +376,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
                 changeYellow()
                 
             }
+            let randomX: CGFloat = CGFloat(drand48())
+            print("RandomX For Impulse = \(randomX)")
+            self.Yellow.physicsBody?.applyImpulse(CGVectorMake(0, -200))
+            print(self.Yellow.position.y)
         }
     }
     
@@ -370,6 +399,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
                 changePurple()
                 
             }
+            let randomX: CGFloat = CGFloat(drand48())
+            print("RandomX For Impulse = \(randomX)")
+            self.Purple.physicsBody?.applyImpulse(CGVectorMake(0, -200))
+            print(self.Purple.position.y)
         }
     }
     
@@ -429,8 +462,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         if HighScoreInput >= HighScore {
             
             userDefaults.setInteger(HighScoreInput, forKey: "highscore")
+            print("Setting High Score In Defaults to: \(HighScore)")
             HighScoreLabel.text = ("High Score: \(String(HighScoreInput))")
+            HighScore = HighScoreInput
             
+            let leaderboardID = "DotDropLeaderboard"
+            let sScore = GKScore(leaderboardIdentifier: leaderboardID)
+            sScore.value = Int64(score)
+            
+            let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+            
+            GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
+                if error != nil {
+                    print("Error")
+                    print(error!.localizedDescription)
+                } else {
+                    print("Score submitted")
+                    
+                }
+            })
         }
         
     }
@@ -679,7 +729,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
     }
 
     func lose() {
+        if audioOn == true{
         hitPlayer.play()
+        }
         print("Lose, high score is: \(HighScore)")
         if score > HighScore    {
             saveHighScore(score)
@@ -691,11 +743,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
             
         if let controller = self.view?.window?.rootViewController as? GameViewController {
             controller.requestInterstitialAdPresentation()
+            print("Requesting ad")
         }
         gameOver = true
     let controllerGK = GameViewController()
         
-        controllerGK.saveHighscore(HighScore)
+        //controllerGK.saveHighscore(HighScore)
     }
     
     func notLose() {
@@ -704,8 +757,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         score++
         print(score)
         ScoreLabel.text = ("Score: \(String(score))")
+        if audioOn == true{
         pop2Player.play()
-        
+        }
         nodeClickedSwitch()
         
     }
