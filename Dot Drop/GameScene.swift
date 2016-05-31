@@ -8,7 +8,6 @@
 
 import SpriteKit
 import UIKit
-import iAd
 import AVFoundation
 import GameKit
 import Darwin
@@ -35,13 +34,13 @@ public func resumeGame(){
     
 }
 
-class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var colorNeeded: SKColor = SKColor()
     var bar:SKShapeNode = SKShapeNode()
     var button: SKNode! = nil
     var increment: CGFloat = 0.01
-    var radius: CGFloat = 30
+    var radius: CGFloat = 35
     var ChangeCounter = 0
     var NodeClicked = ""
     var AwaitingRestart = false
@@ -77,10 +76,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
     
     var CustomWidth: UInt32 = UInt32()
     
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-
-        
         
         //Add this back in if you want the color needed to change every minute
         //var timer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "update", userInfo: nil, repeats: true)
@@ -90,35 +88,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         print("Other Width Is: \(UIScreen.mainScreen().bounds.size.width)")
         print("Middle is: \(self.size.width / 2)")
         
+        print(self.size.height)
+        
         self.size.width = UIScreen.mainScreen().bounds.size.width
         self.size.height = UIScreen.mainScreen().bounds.size.height
         print("Width is now: \(self.size.width)")
-        
+        print(self.size.height)
         
         Background = SKSpriteNode(imageNamed: "images/edit/background")
         Background.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height / 2 )
         Background.zPosition = -1.0
         
-        self.addChild(Background)
         
         //Physics
-        //self.physicsWorld.gravity = CGVector( dx: 0.0, dy: -0.2 )
+        self.physicsWorld.gravity = CGVectorMake(0, 0)
+        let TallerFrame = CGRectMake(self.frame.origin.x - 50, self.frame.origin.y - 100, self.frame.width + 100, self.frame.height + 200)
+        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: TallerFrame)
         //self.physicsWorld.contactDelegate = self
         print(physicsWorld.speed)
         
-        setupCircles()
-        spawnCircles()
         
         changeColorNeeded()
         
-        addRectangleToBottom()
-        
-        if RestartLabel == nil && ScoreLabel == nil && HighScoreLabel == nil {
+        print(self.children.count)
+        if self.children.count == 0 {
             
            setupLabels()
             setupAudioPlayers()
         }
-        
         if audioOn == true {
             
             musicPlayer.play()
@@ -130,9 +127,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         //sparkEmitter!.position = CGPointMake(-100, -100)
         //self.addChild(sparkEmitter!)
         //sparkEmitter!.targetNode = self
+        setupCircles()
+        spawnCircles()
+        self.addChild(Background)
+        addRectangleToBottom()
     }
     
-     
+    override func willMoveFromView(view: SKView) {
+        
+        stopGame()
+        
+    }
+    
+    
+    func stopGame() {
+        
+        stopCircles()
+        self.removeAllChildren()
+    }
     
     func addRestartLabel() {
         
@@ -174,14 +186,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
     
     func waitForRestart() {
         
-        self.physicsWorld.speed = 0
+        //self.physicsWorld.speed = 0
+        
         addRestartLabel()
         removeScoreLabels()
+        stopCircles()
     }
     
-    func goBackToMenu() {
+    func stopCircles() {
         
-        
+        Green.physicsBody?.velocity = CGVectorMake(0, 0)
+        Red.physicsBody?.velocity = CGVectorMake(0, 0)
+        Blue.physicsBody?.velocity = CGVectorMake(0, 0)
+        Yellow.physicsBody?.velocity = CGVectorMake(0, 0)
+        Purple.physicsBody?.velocity = CGVectorMake(0, 0)
     }
     
     func restartGame() {
@@ -215,7 +233,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
     }
     
     func setupCircles() {
-    
+        print("Setting Up Circles")
         Green = SKShapeNode(circleOfRadius: radius) // Size of Circle
         Green.position.y = frame.size.height
         Green.strokeColor = SKColor.clearColor()
@@ -226,6 +244,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         Green.physicsBody?.contactTestBitMask = Physics.Bar
         Green.physicsBody?.collisionBitMask = Physics.Bar
         Green.physicsBody?.dynamic = true
+        Green.physicsBody? = SKPhysicsBody(circleOfRadius: radius)
         Green.name = "Enemy"
         
         Red = SKShapeNode(circleOfRadius: radius) // Size of Circle
@@ -238,6 +257,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         Red.physicsBody?.contactTestBitMask = Physics.Bar
         Red.physicsBody?.collisionBitMask = Physics.Bar
         Red.physicsBody?.dynamic = true
+        Red.physicsBody? = SKPhysicsBody(circleOfRadius: radius)
         Red.name = "Enemy"
         
         Blue = SKShapeNode(circleOfRadius: radius) // Size of Circle
@@ -250,6 +270,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         Blue.physicsBody?.contactTestBitMask = Physics.Bar
         Blue.physicsBody?.collisionBitMask = Physics.Bar
         Blue.physicsBody?.dynamic = true
+        Blue.physicsBody? = SKPhysicsBody(circleOfRadius: radius)
         Blue.name = "Enemy"
         
         Yellow = SKShapeNode(circleOfRadius: radius) // Size of Circle
@@ -262,6 +283,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         Yellow.physicsBody?.contactTestBitMask = Physics.Bar
         Yellow.physicsBody?.collisionBitMask = Physics.Bar
         Yellow.physicsBody?.dynamic = true
+        Yellow.physicsBody? = SKPhysicsBody(circleOfRadius: radius)
         Yellow.name = "Enemy"
         
         Purple = SKShapeNode(circleOfRadius: radius) // Size of Circle
@@ -274,6 +296,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         Purple.physicsBody?.contactTestBitMask = Physics.Bar
         Purple.physicsBody?.collisionBitMask = Physics.Bar
         Purple.physicsBody?.dynamic = true
+        Purple.physicsBody? = SKPhysicsBody(circleOfRadius: radius)
         Purple.name = "Enemy"
         
         self.addChild(Green)
@@ -301,14 +324,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         
         Green.position.x = CGFloat(PositionX)
             
-            while Green.containsPoint(Red.position) || Green.containsPoint(Blue.position) || Green.containsPoint(Yellow.position) || Green.containsPoint(Purple.position) {
+            /*while Green.containsPoint(Red.position) || Green.containsPoint(Blue.position) || Green.containsPoint(Yellow.position) || Green.containsPoint(Purple.position) {
                 print("Overlap Detected")
                 changeGreen()
                 
-            }
-            let randomX: CGFloat = CGFloat(drand48())
+            }*/
+            let randomX: CGFloat = CGFloat((drand48()) * 2)
             print("RandomX For Impulse = \(randomX)")
-            self.Green.physicsBody?.applyImpulse(CGVectorMake(0, -200))
+            Green.physicsBody?.applyImpulse(CGVectorMake(randomX, -10))
             print(self.Green.position.y)
         }
         
@@ -325,14 +348,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         
         Red.position.x = CGFloat(PositionX)
             
-            while Red.containsPoint(Blue.position) || Red.containsPoint(Yellow.position) || Red.containsPoint(Green.position) || Red.containsPoint(Purple.position) {
+            /*while Red.containsPoint(Blue.position) || Red.containsPoint(Yellow.position) || Red.containsPoint(Green.position) || Red.containsPoint(Purple.position) {
                 print("Overlap Detected")
                 changeRed()
                 
-            }
-            let randomX: CGFloat = CGFloat(drand48())
+            }*/
+            let randomX: CGFloat = CGFloat((drand48()) * 2)
             print("RandomX For Impulse = \(randomX)")
-            self.Red.physicsBody?.applyImpulse(CGVectorMake(0, -200))
+            print("Applying Impulse")
+            Red.physicsBody?.applyImpulse(CGVectorMake(randomX, -10))
             print(self.Red.position.y)
         }
     }
@@ -347,15 +371,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         
         Blue.position.x = CGFloat(PositionX)
             
-            while Blue.containsPoint(Red.position) || Blue.containsPoint(Yellow.position) || Blue.containsPoint(Green.position) || Blue.containsPoint(Purple.position) {
+            /*while Blue.containsPoint(Red.position) || Blue.containsPoint(Yellow.position) || Blue.containsPoint(Green.position) || Blue.containsPoint(Purple.position) {
                 print("Overlap Detected")
                 changeBlue()
                 
-            }
-            let randomX: CGFloat = CGFloat(drand48())
+            }*/
+            let randomX: CGFloat = CGFloat((drand48()) * 2)
             print("RandomX For Impulse = \(randomX)")
             print("Applying Impulse")
-            self.Blue.physicsBody?.applyImpulse(CGVectorMake(0, -200))
+            self.Blue.physicsBody?.applyImpulse(CGVectorMake(randomX, -10))
             print(self.Blue.position.y)
         }
     }
@@ -371,14 +395,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         
         Yellow.position.x = CGFloat(PositionX)
             
-            while Yellow.containsPoint(Red.position) || Yellow.containsPoint(Blue.position) || Yellow.containsPoint(Green.position) || Yellow.containsPoint(Purple.position) {
+            /*while Yellow.containsPoint(Red.position) || Yellow.containsPoint(Blue.position) || Yellow.containsPoint(Green.position) || Yellow.containsPoint(Purple.position) {
                 print("Overlap Detected")
                 changeYellow()
                 
-            }
-            let randomX: CGFloat = CGFloat(drand48())
+            }*/
+            let randomX: CGFloat = CGFloat((drand48()) * 2)
             print("RandomX For Impulse = \(randomX)")
-            self.Yellow.physicsBody?.applyImpulse(CGVectorMake(0, -200))
+            self.Yellow.physicsBody?.applyImpulse(CGVectorMake(randomX, -10))
             print(self.Yellow.position.y)
         }
     }
@@ -394,14 +418,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         
         Purple.position.x = CGFloat(PositionX)
             
-            while Purple.containsPoint(Red.position) || Purple.containsPoint(Blue.position) || Purple.containsPoint(Yellow.position) || Purple.containsPoint(Green.position) {
+            /*while Purple.containsPoint(Red.position) || Purple.containsPoint(Blue.position) || Purple.containsPoint(Yellow.position) || Purple.containsPoint(Green.position) {
                 print("Overlap Detected")
                 changePurple()
                 
-            }
-            let randomX: CGFloat = CGFloat(drand48())
+            }*/
+            let randomX: CGFloat = CGFloat((drand48()) * 2)
             print("RandomX For Impulse = \(randomX)")
-            self.Purple.physicsBody?.applyImpulse(CGVectorMake(0, -200))
+            self.Purple.physicsBody?.applyImpulse(CGVectorMake(randomX, -10))
             print(self.Purple.position.y)
         }
     }
@@ -666,11 +690,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
             changeGreen()
             
         }
-        
+        print("Red:\(Red.position.y) Blue:\(Blue.position.y) Yellow:\(Yellow.position.y) Green:\(Green.position.y) Purple:\(Purple.position.y)")
         switch colorNeeded  {
             
         case SKColor.redColor():
-            
             if Blue.position.y <= 0 || Yellow.position.y <= 0 || Green.position.y <= 0 || Purple.position.y <= 0  {
                 
                 lose()
@@ -741,12 +764,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ADBannerViewDelegate {
         waitForRestart()
         
             
-        if let controller = self.view?.window?.rootViewController as? GameViewController {
-            controller.requestInterstitialAdPresentation()
-            print("Requesting ad")
-        }
+        
         gameOver = true
     let controllerGK = GameViewController()
+        
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.postNotificationName("GameOver", object: nil)
         
         //controllerGK.saveHighscore(HighScore)
     }

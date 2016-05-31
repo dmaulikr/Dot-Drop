@@ -8,20 +8,15 @@
 
 import UIKit
 import SpriteKit
-import iAd
 import SceneKit
 import GameKit
+import GoogleMobileAds
 
 var audioOn: Bool = true
 
-func pushAd() {
-    
-    
-    
-}
 
-class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterControllerDelegate {
-    var interstitialAd:ADInterstitialAd!
+
+class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADInterstitialDelegate {
     var interstitialAdView: UIView = UIView()
     @IBOutlet var background: UIImageView!
     @IBOutlet var PlayButton: UIButton!
@@ -30,7 +25,6 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     @IBOutlet var infoHidden: UIImageView!
     @IBOutlet var settingsButton: UIButton!
     @IBOutlet var shareButton: UIButton!
-    @IBOutlet var adBanner: ADBannerView!
     @IBOutlet var starButton: UIButton!
     @IBOutlet var trophyButton: UIButton!
     @IBOutlet var audioButton: UIButton!
@@ -38,9 +32,18 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     
     var skView = SKView()
     var scene = SKScene()
+    var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.interstitial = GADInterstitial(adUnitID: "ca-app-pub-2881724328700674/1430232147")
+        let request = GADRequest()
+    
+        self.interstitial.loadRequest(request)
+        self.interstitial = reloadInterstitialAd()
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: "displayAd", name: "GameOver", object: nil)
+        
         print(self.view.subviews[0])
         print(self.view.subviews[1])
         print(self.view.subviews[2])
@@ -48,10 +51,6 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
         backButton.userInteractionEnabled = false
         backButton.hidden = true
         //self.backButton.bringSubviewToFront(skView)
-        self.requestInterstitialAdPresentation()
-        adBanner.delegate = self
-        adBanner.hidden = true
-        self.interstitialPresentationPolicy = ADInterstitialPresentationPolicy.Manual
         skView = SKView(frame: self.view.frame)
         scene = GameScene(size: skView.bounds.size)
         
@@ -79,44 +78,24 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
             
         }
     
-    /*func loadInterstitialAd() {
-        print("LoadIntersitialAd")
-        interstitialAd = ADInterstitialAd()
-        interstitialAd.delegate = self
+    func reloadInterstitialAd() -> GADInterstitial {
+        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-2881724328700674/4302973345")
+        interstitial.delegate = self
+        interstitial.loadRequest(GADRequest())
+        return interstitial
     }
     
-    func interstitialAdWillLoad(interstitialAd: ADInterstitialAd!) {
-        print("IntersitialAdWillLoad")
+    func interstitialDidDismissScreen(ad: GADInterstitial!) {
+        self.interstitial = reloadInterstitialAd()
     }
     
-    func interstitialAdDidLoad(interstitialAd: ADInterstitialAd!) {
-        print("InterstitialAdDidLoad")
-        interstitialAdView = UIView()
-        interstitialAdView.frame = self.view.bounds
-        view.addSubview(interstitialAdView)
+    func displayAd() {
         
-        interstitialAd.presentInView(interstitialAdView)
-        UIViewController.prepareInterstitialAds()
+        print("Displaying Ad")
+        if self.interstitial.isReady {
+            self.interstitial.presentFromRootViewController(self)
+        }
     }
-    
-    func interstitialAdActionDidFinish(interstitialAd: ADInterstitialAd!) {
-        print("InterstitialAdActionDidFinish")
-        interstitialAdView.removeFromSuperview()
-    }
-    
-    func interstitialAdActionShouldBegin(interstitialAd: ADInterstitialAd!, willLeaveApplication willLeave: Bool) -> Bool {
-        print("InterstitialAdActionShouldBegin")
-        return true
-    }
-    
-    func interstitialAd(interstitialAd: ADInterstitialAd!, didFailWithError error: NSError!) {
-        print("InterstitialAdDidFailWithError")
-    }
-    
-    func interstitialAdDidUnload(interstitialAd: ADInterstitialAd!) {
-        print("InterstitialAdDidUnload")
-        interstitialAdView.removeFromSuperview()
-    }*/
     
     //send high score to leaderboard
     
@@ -139,14 +118,6 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     {
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
         
-    }
-    
-    func bannerViewDidLoadAd(banner: ADBannerView!) {
-        adBanner.hidden = false
-    }
-    
-    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        adBanner.hidden = true
     }
     
     override func shouldAutorotate() -> Bool {
@@ -265,7 +236,6 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
             self.shareButton.center.x = self.view.frame.width - 600
             self.starButton.center.x = self.view.frame.width - 600
             self.trophyButton.center.x = self.view.frame.width - 600
-            self.adBanner.center.x = self.view.frame.width - 600
             self.audioButton.center.x = self.view.frame.width - 600
             //self.view.frame.width - 800
             
@@ -287,7 +257,6 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
             self.shareButton.center.x = self.view.frame.width + 600
             self.starButton.center.x = self.view.frame.width + 600
             self.trophyButton.center.x = self.view.frame.width + 600
-            self.adBanner.center.x = self.view.frame.width + 600
             self.audioButton.center.x = self.view.frame.width + 600
             //self.view.frame.width + 800
             
@@ -325,7 +294,7 @@ class GameViewController: UIViewController, ADBannerViewDelegate, GKGameCenterCo
     }
     @IBAction func starButtonClicked(sender: AnyObject) {
         
-        let url  = NSURL(string: "itms-apps://itunes.apple.com/app/bars/id1046181057")
+        let url  = NSURL(string: "https://appsto.re/us/UTLq_.i")
         if UIApplication.sharedApplication().canOpenURL(url!) == true  {
             UIApplication.sharedApplication().openURL(url!)
         }

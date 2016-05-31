@@ -13,6 +13,7 @@
 		EB2C17471BCDE4DE00664813 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2C17461BCDE4DE00664813 /* iAd.framework */; };
 		EB2D0DB71BCC992F0080BE48 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2D0DB61BCC992F0080BE48 /* share.png */; };
 		EB3A61F91BC490E70017407F /* Animations in Resources */ = {isa = PBXBuildFile; fileRef = EB3A61F81BC490E70017407F /* Animations */; };
+		EB42998B1CFD422C00855C6B /* Pods_Dot_Drop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB42998A1CFD422C00855C6B /* Pods_Dot_Drop.framework */; };
 		EB5F7C701BBF60D70000DD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5F7C6F1BBF60D70000DD40 /* AppDelegate.swift */; };
 		EB5F7C721BBF60D80000DD40 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EB5F7C711BBF60D80000DD40 /* GameScene.sks */; };
 		EB5F7C741BBF60D80000DD40 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5F7C731BBF60D80000DD40 /* GameScene.swift */; };
@@ -57,12 +58,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1AFFE6F8B8074BD143F337C9 /* Pods-Dot Drop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dot Drop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dot Drop/Pods-Dot Drop.debug.xcconfig"; sourceTree = "<group>"; };
+		4F56D9570E7A64F017213009 /* Pods_Dot_Drop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dot_Drop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76BB6FB0E4E69205AE1BE874 /* Pods-Dot Drop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dot Drop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dot Drop/Pods-Dot Drop.release.xcconfig"; sourceTree = "<group>"; };
 		EB037B761BC8AFA000708729 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		EB222FA91CC06DDE00032B48 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		EB222FAA1CC06DDE00032B48 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		EB2C17461BCDE4DE00664813 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		EB2D0DB61BCC992F0080BE48 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = images/UI/share.png; sourceTree = "<group>"; };
 		EB3A61F81BC490E70017407F /* Animations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Animations; sourceTree = "<group>"; };
+		EB4299881CFD3DB400855C6B /* Pods_Dot_Drop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Dot_Drop.framework; path = "Pods/../build/Debug-iphoneos/Pods_Dot_Drop.framework"; sourceTree = "<group>"; };
+		EB42998A1CFD422C00855C6B /* Pods_Dot_Drop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Dot_Drop.framework; path = "Pods/../build/Debug-iphoneos/Pods_Dot_Drop.framework"; sourceTree = "<group>"; };
 		EB5F7C6C1BBF60D70000DD40 /* Dot Drop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dot Drop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5F7C6F1BBF60D70000DD40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB5F7C711BBF60D80000DD40 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB42998B1CFD422C00855C6B /* Pods_Dot_Drop.framework in Frameworks */,
 				EB2C17471BCDE4DE00664813 /* iAd.framework in Frameworks */,
 				EB037B771BC8AFA000708729 /* GameKit.framework in Frameworks */,
 			);
@@ -122,6 +129,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		140B5FAD41221B5CCA8AF6B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB42998A1CFD422C00855C6B /* Pods_Dot_Drop.framework */,
+				EB4299881CFD3DB400855C6B /* Pods_Dot_Drop.framework */,
+				4F56D9570E7A64F017213009 /* Pods_Dot_Drop.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA1A74D6D59812C2B23B9FCB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1AFFE6F8B8074BD143F337C9 /* Pods-Dot Drop.debug.xcconfig */,
+				76BB6FB0E4E69205AE1BE874 /* Pods-Dot Drop.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EB5F7C631BBF60D60000DD40 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +174,8 @@
 				EB5F7CB11BC05BF80000DD40 /* fonts */,
 				EB5F7CB21BC05BF80000DD40 /* images */,
 				EB5F7CB31BC05BF80000DD40 /* sounds */,
+				EA1A74D6D59812C2B23B9FCB /* Pods */,
+				140B5FAD41221B5CCA8AF6B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,9 +231,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB5F7C981BBF60DA0000DD40 /* Build configuration list for PBXNativeTarget "Dot Drop" */;
 			buildPhases = (
+				523121CFCD95771A1B49C732 /* Check Pods Manifest.lock */,
 				EB5F7C681BBF60D60000DD40 /* Sources */,
 				EB5F7C691BBF60D60000DD40 /* Frameworks */,
 				EB5F7C6A1BBF60D60000DD40 /* Resources */,
+				6A44B377792A640AD17ECE4E /* Embed Pods Frameworks */,
+				DFF05FEAA2FDE233D0431E54 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,7 +290,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = justfun;
+				ORGANIZATIONNAME = "Joseph Sandum";
 				TargetAttributes = {
 					EB5F7C6B1BBF60D60000DD40 = {
 						CreatedOnToolsVersion = 7.0;
@@ -342,6 +373,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		523121CFCD95771A1B49C732 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6A44B377792A640AD17ECE4E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dot Drop/Pods-Dot Drop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFF05FEAA2FDE233D0431E54 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dot Drop/Pods-Dot Drop-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EB5F7C681BBF60D60000DD40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -421,8 +500,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Joseph Sandum (RP6CD35H67)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Joseph Sandum (RP6CD35H67)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -467,8 +546,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Joseph Sandum (RP6CD35H67)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Joseph Sandum (RP6CD35H67)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -491,10 +570,15 @@
 		};
 		EB5F7C991BBF60DA0000DD40 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AFFE6F8B8074BD143F337C9 /* Pods-Dot Drop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "Dot Drop/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -507,10 +591,15 @@
 		};
 		EB5F7C9A1BBF60DA0000DD40 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76BB6FB0E4E69205AE1BE874 /* Pods-Dot Drop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "Dot Drop/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
