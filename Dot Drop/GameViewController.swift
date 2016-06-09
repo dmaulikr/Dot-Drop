@@ -11,6 +11,7 @@ import SpriteKit
 import SceneKit
 import GameKit
 import GoogleMobileAds
+import Social
 
 var audioOn: Bool = true
 
@@ -36,6 +37,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        HighScore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
         self.interstitial = GADInterstitial(adUnitID: "ca-app-pub-2881724328700674/1430232147")
         let request = GADRequest()
     
@@ -187,7 +189,20 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
 
     @IBAction func shareClicked(sender: AnyObject) {
         
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://twitter.com/GingerCodeTeam")!)
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            
+            var tweetShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            tweetShare.setInitialText("Try and beat my high score of \(HighScore) In Dot Drop! https://appsto.re/us/UTLq_.i")
+            self.presentViewController(tweetShare, animated: true, completion: nil)
+            
+        } else {
+            
+            var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to tweet.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
         
     }
 

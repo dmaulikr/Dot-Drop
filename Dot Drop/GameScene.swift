@@ -694,7 +694,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch colorNeeded  {
             
         case SKColor.redColor():
-            if Blue.position.y <= 0 || Yellow.position.y <= 0 || Green.position.y <= 0 || Purple.position.y <= 0  {
+            if Blue.position.y <= 20 || Yellow.position.y <= 20 || Green.position.y <= 20 || Purple.position.y <= 20  {
                 
                 lose()
                 
@@ -704,7 +704,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case SKColor.blueColor():
             
-            if Red.position.y <= 0 || Yellow.position.y <= 0 || Green.position.y <= 0 || Purple.position.y <= 0  {
+            if Red.position.y <= 20 || Yellow.position.y <= 20 || Green.position.y <= 20 || Purple.position.y <= 20  {
                 
                 lose()
                 
@@ -713,8 +713,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
             
         case SKColor.yellowColor():
-            
-            if Red.position.y <= 0 || Blue.position.y <= 0 || Green.position.y <= 0 || Purple.position.y <= 0  {
+        
+            if Red.position.y <= 20 || Blue.position.y <= 20 || Green.position.y <= 20 || Purple.position.y <= 20  {
                 
                 lose()
                 
@@ -723,7 +723,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         case SKColor.greenColor():
             
-            if Red.position.y <= 0 || Blue.position.y <= 0 || Yellow.position.y <= 0 || Purple.position.y <= 0  {
+            if Red.position.y <= 20 || Blue.position.y <= 20 || Yellow.position.y <= 20 || Purple.position.y <= 20  {
                 
                 lose()
                 
@@ -732,7 +732,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         case SKColor.purpleColor():
             
-            if Red.position.y <= 0 || Blue.position.y <= 0 || Yellow.position.y <= 0 || Green.position.y <= 0  {
+            if Red.position.y <= 20 || Blue.position.y <= 20 || Yellow.position.y <= 0 || Green.position.y <= 20  {
                 
                 lose()
                 
